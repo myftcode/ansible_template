@@ -1,0 +1,29 @@
+---
+
+- name: backup old cert
+  shell: |
+    #!/bin/bash
+    #
+
+    #define backup file name
+    bk_pem={{ backup_pem }}
+    bk_key={{ backup_key }}
+    
+    # backup old cert 
+    if [ -e /etc/nginx/cert/server.pem ];then
+      mv /etc/nginx/cert/{server.pem,$bk_pem}
+    fi
+    if [ -e /etc/nginx/cert/server.key ];then
+      mv /etc/nginx/cert/{server.key,$bk_key}
+    fi
+
+- name: copy new cert file to dest host
+  copy:
+   src: "{{ item }}"
+   dest: "/etc/nginx/cert/{{ item }}"
+   owner: root
+   group: root
+   mode: 0644
+  with_items: "{{ cert_files }}"
+  notify:
+  - restart nginx

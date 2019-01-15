@@ -1,0 +1,5 @@
+cert_files:
+ - server.pem
+ - server.key
+backup_pem: "2019-server.pem"
+backup_key: "2019-server.key"
