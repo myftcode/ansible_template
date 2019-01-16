@@ -1,2 +1,14 @@
 [host]
 182.140.223.218
+[web]
+172.16.0.19
+172.16.0.20
+172.16.0.21
+
+172.16.0.217
+172.16.0.218
+172.16.0.222
+[all:vars]
+ansible_ssh_pass='Ga#2018168'
+ansible_ssh_user='den'
+ansible_become_pass='Ga#2018168'

@@ -4,17 +4,20 @@
   shell: |
     #!/bin/bash
     #
-
-    #define backup file name
-    bk_pem={{ backup_pem }}
+    
+    # define old cert file name
+    old_crt={{ old_crt }}
+    old_key={{ old_key }}
+    # define backup file name
+    bk_crt={{ backup_crt }}
     bk_key={{ backup_key }}
     
     # backup old cert 
-    if [ -e /etc/nginx/cert/server.pem ];then
-      mv /etc/nginx/cert/{server.pem,$bk_pem}
+    if [ -e /etc/nginx/cert/${old_crt} ];then
+      mv /etc/nginx/cert/{$old_crt,$bk_crt}
     fi
     if [ -e /etc/nginx/cert/server.key ];then
-      mv /etc/nginx/cert/{server.key,$bk_key}
+      mv /etc/nginx/cert/{$old_key,$bk_key}
     fi
 
 - name: copy new cert file to dest host

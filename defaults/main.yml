@@ -1,5 +1,10 @@
+# new cert
 cert_files:
- - server.pem
+ - server.crt
  - server.key
-backup_pem: "2019-server.pem"
+# define old cert
+old_crt: "server.crt"
+old_key: "server.key"
+# define backup to other file
+backup_crt: "2019-server.crt"
 backup_key: "2019-server.key"
